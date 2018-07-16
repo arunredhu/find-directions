@@ -1,0 +1,29 @@
+.directions-form {
+    padding: 16px;
+}
+
+.form-input {
+    margin-top: 16px;
+}
+
+.form-input > label {
+    margin-bottom: 12px;
+    font-size: 12px;
+    display: block;
+}
+
+.form-input > input {
+    display: block;
+    padding: 8px;
+    width: 200px;
+}
+
+.get-route-btn > button {
+    margin-top: 16px;
+    padding: 8px;
+    min-width: 100px;
+    border: none;
+    background: green;
+    color: #ffffff;
+    cursor: pointer;
+}

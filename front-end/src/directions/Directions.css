@@ -1,0 +1,11 @@
+.directions-container {
+    display: flex;
+    width: 100%;
+}
+.direction-form-container {
+    flex: 0 0 50%;
+}
+
+.directions-route-info {
+    margin-top: 16px;
+}

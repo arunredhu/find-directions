@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Direction Form Test render correctly 1`] = `
+<div
+  className="directions-form"
+>
+  <div
+    className="form-input"
+  >
+    <label>
+      Starting Location
+    </label>
+    <input
+      type="text"
+    />
+  </div>
+  <div
+    className="form-input"
+  >
+    <label>
+      Drop-off point
+    </label>
+    <input
+      type="text"
+    />
+  </div>
+  <div
+    className="get-route-btn"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Get Route
+    </button>
+  </div>
+</div>
+`;
