@@ -1,6 +1,6 @@
 import GoogleMapsLoader from 'google-maps';
 
-import { googleAPIKey } from './config';
+import { googleAPIKey } from '../config';
 
 GoogleMapsLoader.KEY = googleAPIKey;
 

@@ -1,32 +1,40 @@
 import React, { Component } from 'react';
 
-import { mapClient } from '../../../common/map-client';
+import { mapClient } from '../../../common/map-client/map-client';
 
-import './DirectionsMap.css';
+import './DirectionsMap.scss';
 
+/**
+ * @name DirectionsMap
+ * @type {Component}
+ * @extends Component React component
+ * @description This component display the map and contains the functionality to render the routes
+ */
 class DirectionsMap extends Component {
+    // map container to save the ref to render the map
     mapContainer;
+    // containe the map reference after rendering the map
     map;
+    // google map api reference
     google;
 
-    constructor() {
-        super();
-    }
+    /**
+     * @name initMap
+     * @description Initialize the map
+     */
+    initMap = async () => {
+        this.google = await mapClient;
 
-    initMap() {
-        mapClient.then(google => {
-            this.google = google;
-            this.map = new google.maps.Map(this.mapContainer, {
-                zoom: 11,
-                center: { lat: 22.372081, lng: 114.107877 }
-            });
+        this.map = new this.google.maps.Map(this.mapContainer, {
+            zoom: 11,
+            center: { lat: 22.372081, lng: 114.107877 }
         });
-    }
+    };
 
     drawDirections = ({ path }) => {
-        const dirCoordinates = path.map(item => ({
-            lat: Number(item[0]),
-            lng: Number(item[1])
+        const dirCoordinates = path.map(([lat, lng]) => ({
+            lat: Number(lat),
+            lng: Number(lng)
         }));
 
         const dirPath = new this.google.maps.Polyline({
