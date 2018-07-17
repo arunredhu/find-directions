@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { mapClient } from '../../../common/map-client/map-client';
+import { maps } from '../../../common/services';
 
 import './DirectionsForm.scss';
 
@@ -10,22 +10,14 @@ import './DirectionsForm.scss';
  * @description This component contins the auto complete form
  */
 class DirectionsForm extends Component {
+    // Starting point input, needs to save ref
     fromInput;
+    // Starting point Autocomplete, After rendering the google autocomplete, reference will be saved in this
     fromInputAutoComplete;
+    // Drop-off point input, needs to save ref
     toInputAutoComplete;
+    // Drop-off point Autocomplete, After rendering the google autocomplete, reference will be saved in this
     toInput;
-    /**@constructor */
-    constructor() {
-        super();
-        // // Starting point input, needs to save ref
-        // this.fromInput = undefined;
-        // // Starting point Autocomplete, After rendering the google autocomplete, reference will be saved in this
-        // this.fromInputAutoComplete = undefined;
-        // // Drop-off point input, needs to save ref
-        // this.toInputAutoComplete = undefined;
-        // // Drop-off point Autocomplete, After rendering the google autocomplete, reference will be saved in this
-        // this.toInput = undefined;
-    }
 
     /**
      * @name getRoute
@@ -42,15 +34,13 @@ class DirectionsForm extends Component {
      * @description Attach the google places autocomplete to the inputs
      */
     renderAutoComplete = async () => {
-        const google = await mapClient;
+        const maps = await this.props.maps();
 
-        this.fromInputAutoComplete = new google.maps.places.Autocomplete(
+        this.fromInputAutoComplete = new maps.places.Autocomplete(
             this.fromInput
         );
-
-        this.toInputAutoComplete = new google.maps.places.Autocomplete(
-            this.toInput
-        );
+        console.log(this.fromInputAutoComplete);
+        this.toInputAutoComplete = new maps.places.Autocomplete(this.toInput);
     };
 
     /**
@@ -81,5 +71,9 @@ class DirectionsForm extends Component {
         );
     }
 }
+
+DirectionsForm.defaultProps = {
+    maps
+};
 
 export default DirectionsForm;

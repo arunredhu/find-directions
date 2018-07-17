@@ -1,6 +1,6 @@
-import { restClient } from '../../common/rest-client';
+import { restClient } from '../../../common/services';
 
-import { API_CONSTANTS } from '../config';
+import { API_CONSTANTS } from '../../config';
 
 /**
  * @name fetchRoute
@@ -29,7 +29,6 @@ const fetchToken = async (from, to) => {
         to
     };
 
-    //
     const response = await restClient.post(url, request);
 
     const { data } = response;

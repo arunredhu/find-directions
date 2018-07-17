@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { mapClient } from '../../../common/map-client/map-client';
+import { maps } from '../../../common/services';
 
 import './DirectionsMap.scss';
 
@@ -16,36 +16,49 @@ class DirectionsMap extends Component {
     // containe the map reference after rendering the map
     map;
     // google map api reference
-    google;
+    maps;
 
     /**
      * @name initMap
      * @description Initialize the map
      */
     initMap = async () => {
-        this.google = await mapClient;
+        this.maps = await this.props.maps();
 
-        this.map = new this.google.maps.Map(this.mapContainer, {
+        this.map = new this.maps.Map(this.mapContainer, {
             zoom: 11,
             center: { lat: 22.372081, lng: 114.107877 }
         });
     };
 
+    preparePositionsFromPath = path => {
+        return path.map(([lat, lng]) => new this.maps.LatLng(lat, lng));
+    };
+
     drawDirections = ({ path }) => {
-        const dirCoordinates = path.map(([lat, lng]) => ({
-            lat: Number(lat),
-            lng: Number(lng)
-        }));
+        const directionsService = new this.maps.DirectionsService();
+        const directionsRenderer = new this.maps.DirectionsRenderer();
 
-        const dirPath = new this.google.maps.Polyline({
-            path: dirCoordinates,
-            geodesic: true,
-            strokeColor: '#4285f4',
-            strokeOpacity: 1.0,
-            strokeWeight: 4
+        directionsRenderer.setMap(this.map);
+
+        const positions = this.preparePositionsFromPath(path);
+        const waypoints = positions
+            .slice(1, positions.length - 1)
+            .map(location => ({ location, stopover: false }));
+
+        const request = {
+            origin: positions[0],
+            destination: positions[positions.length - 1],
+            waypoints,
+            optimizeWaypoints: true,
+            travelMode: this.maps.TravelMode.DRIVING
+        };
+
+        directionsService.route(request, (response, status) => {
+            if (status === this.maps.DirectionsStatus.OK) {
+                directionsRenderer.setDirections(response);
+            }
         });
-
-        dirPath.setMap(this.map);
     };
 
     componentDidMount() {
@@ -67,5 +80,9 @@ class DirectionsMap extends Component {
         );
     }
 }
+
+DirectionsMap.defaultProps = {
+    maps
+};
 
 export default DirectionsMap;
