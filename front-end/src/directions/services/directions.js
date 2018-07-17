@@ -10,9 +10,7 @@ import { API_CONSTANTS } from '../config';
  */
 const fetchRoute = async token => {
     const url = `${API_CONSTANTS.route}/${token}`;
-
     const response = await restClient.get(url);
-
     const { data } = response;
 
     return data;
@@ -26,7 +24,6 @@ const fetchRoute = async token => {
  */
 const fetchToken = async (from, to) => {
     const url = API_CONSTANTS.route;
-
     const request = {
         from,
         to
@@ -48,7 +45,6 @@ const fetchToken = async (from, to) => {
  */
 const fetchDirections = async (from, to) => {
     const token = await fetchToken(from, to);
-
     let result = await fetchRoute(token);
 
     // if status is 'in progress' then retry the request again

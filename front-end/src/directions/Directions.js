@@ -19,7 +19,7 @@ class Directions extends Component {
 
         // initial state
         this.state = {
-            directionsResponse: undefined
+            directionsResponse: null
         };
     }
 
