@@ -39,7 +39,7 @@ class DirectionsForm extends Component {
         this.fromInputAutoComplete = new maps.places.Autocomplete(
             this.fromInput
         );
-        console.log(this.fromInputAutoComplete);
+
         this.toInputAutoComplete = new maps.places.Autocomplete(this.toInput);
     };
 
