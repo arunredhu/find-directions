@@ -10,17 +10,21 @@ import './DirectionsForm.scss';
  * @description This component contins the auto complete form
  */
 class DirectionsForm extends Component {
+    fromInput;
+    fromInputAutoComplete;
+    toInputAutoComplete;
+    toInput;
     /**@constructor */
     constructor() {
         super();
-        // Starting point input, needs to save ref
-        this.fromInput = undefined;
-        // Starting point Autocomplete, After rendering the google autocomplete, reference will be saved in this
-        this.fromInputAutoComplete = undefined;
-        // Drop-off point input, needs to save ref
-        this.toInputAutoComplete = undefined;
-        // Drop-off point Autocomplete, After rendering the google autocomplete, reference will be saved in this
-        this.toInput = undefined;
+        // // Starting point input, needs to save ref
+        // this.fromInput = undefined;
+        // // Starting point Autocomplete, After rendering the google autocomplete, reference will be saved in this
+        // this.fromInputAutoComplete = undefined;
+        // // Drop-off point input, needs to save ref
+        // this.toInputAutoComplete = undefined;
+        // // Drop-off point Autocomplete, After rendering the google autocomplete, reference will be saved in this
+        // this.toInput = undefined;
     }
 
     /**
