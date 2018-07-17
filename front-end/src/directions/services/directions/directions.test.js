@@ -21,11 +21,12 @@ describe('Test for directions api', () => {
         const post = jest.spyOn(restClient, 'post');
 
         post.mockImplementation(() =>
-            Promise.resolve({ data: { token: 'token' } })
+            Promise.resolve({ data: mockTokenResponse })
         );
 
         const token = await directions.fetchToken('from', 'to');
         expect(token).toBeDefined();
+        post.mockRestore();
     });
 
     it('Should test for fetchRoute method', async () => {
@@ -38,21 +39,28 @@ describe('Test for directions api', () => {
         const result = await directions.fetchRoute('token');
         expect(result).toBeDefined();
         expect(result.status).toEqual('success');
+        get.mockRestore();
     });
 
-    it('Should test for fetchRoute method', async () => {
-        const fetchRoute = jest.spyOn(directions, 'fetchRoute');
-        const fetchToken = jest.spyOn(directions, 'fetchToken');
+    it('Should test for fetchDirections method', async () => {
+        const get = jest.spyOn(restClient, 'get');
+        const post = jest.spyOn(restClient, 'post');
 
-        fetchRoute.mockImplementation(() =>
-            Promise.resolve({ data: mockDirectionResponse })
+        post.mockImplementation(() =>
+            Promise.resolve({
+                data: {
+                    token: 'token'
+                }
+            })
         );
 
-        fetchToken.mockImplementation(() =>
-            Promise.resolve({ data: mockTokenResponse })
+        get.mockImplementation(() =>
+            Promise.resolve({
+                data: mockDirectionResponse
+            })
         );
 
-        const result = await directions.fetchRoute('token');
+        const result = await directions.fetchDirections('from', 'to');
         expect(result).toBeDefined();
         expect(result.status).toEqual('success');
     });
