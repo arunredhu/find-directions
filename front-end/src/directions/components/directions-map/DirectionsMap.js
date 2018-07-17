@@ -84,6 +84,8 @@ class DirectionsMap extends Component {
         }
     }
 
+    componentDidUpdate() {}
+
     render() {
         return (
             <div className="map-container">

@@ -1,2 +1,2 @@
-export * from './map-client';
+export * from './map';
 export * from './rest-client';
