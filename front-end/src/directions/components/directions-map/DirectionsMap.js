@@ -31,10 +31,18 @@ class DirectionsMap extends Component {
         });
     };
 
+    /**
+     * @description Prepare Map positions from path points
+     * @param path Array of points
+     */
     preparePositionsFromPath = path => {
         return path.map(([lat, lng]) => new this.maps.LatLng(lat, lng));
     };
 
+    /**
+     * @description Plot the received points on map as route directions
+     * @param Object Response object returned from the Api containing the path points
+     */
     drawDirections = ({ path }) => {
         const directionsService = new this.maps.DirectionsService();
         const directionsRenderer = new this.maps.DirectionsRenderer();
@@ -46,6 +54,7 @@ class DirectionsMap extends Component {
             .slice(1, positions.length - 1)
             .map(location => ({ location, stopover: false }));
 
+        // request for the google map directions api
         const request = {
             origin: positions[0],
             destination: positions[positions.length - 1],
@@ -54,9 +63,12 @@ class DirectionsMap extends Component {
             travelMode: this.maps.TravelMode.DRIVING
         };
 
+        // get the route from directionService and then plot with the help of directionsRenderer
         directionsService.route(request, (response, status) => {
             if (status === this.maps.DirectionsStatus.OK) {
                 directionsRenderer.setDirections(response);
+            } else {
+                alert('Error in direction service response');
             }
         });
     };
@@ -65,8 +77,8 @@ class DirectionsMap extends Component {
         this.initMap();
     }
 
-    componentWillReceiveProps(props) {
-        const { directions } = props;
+    getSnapshotBeforeUpdate() {
+        const { directions } = this.props;
         if (directions) {
             this.drawDirections(directions);
         }
