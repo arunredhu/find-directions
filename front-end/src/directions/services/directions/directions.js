@@ -1,5 +1,4 @@
-import { restClient } from '../../../common/services';
-
+import { restClient } from '../../../common/services/';
 import { API_CONSTANTS } from '../../config';
 
 /**
@@ -58,4 +57,4 @@ const fetchDirections = async (from, to) => {
     return result;
 };
 
-export { fetchDirections };
+export { fetchDirections, fetchToken, fetchRoute };
