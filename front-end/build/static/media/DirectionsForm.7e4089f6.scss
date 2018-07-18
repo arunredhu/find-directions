@@ -1,0 +1,39 @@
+@import '../../../responsive.scss';
+
+.directions-form {
+    padding: 16px;
+    display: flex;
+    align-items: flex-end;
+
+    @include mobile {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.form-input {
+    margin-top: 16px;
+    margin-right: 16px;
+
+    > label {
+        margin-bottom: 12px;
+        font-size: 12px;
+        display: block;
+    }
+
+    > input {
+        display: block;
+        padding: 8px;
+        width: 200px;
+    }
+}
+
+.get-route-btn > button {
+    margin-top: 16px;
+    padding: 10px;
+    min-width: 100px;
+    border: none;
+    background: green;
+    color: #ffffff;
+    cursor: pointer;
+}
