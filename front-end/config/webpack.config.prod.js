@@ -1,13 +1,13 @@
 'use strict';
 
-const autoprefixer = require('../../../../../Library/Caches/typescript/2.9/node_modules/@types/autoprefixer');
+const autoprefixer = require('autoprefixer');
 const path = require('path');
-const webpack = require('../../../../../Library/Caches/typescript/2.9/node_modules/@types/webpack');
-const HtmlWebpackPlugin = require('../../../../../Library/Caches/typescript/2.9/node_modules/@types/html-webpack-plugin');
-const ExtractTextPlugin = require('../../../../../Library/Caches/typescript/2.9/node_modules/@types/extract-text-webpack-plugin');
-const ManifestPlugin = require('../../../../../Library/Caches/typescript/2.9/node_modules/@types/webpack-manifest-plugin');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const SWPrecacheWebpackPlugin = require('../../../../../Library/Caches/typescript/2.9/node_modules/@types/sw-precache-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
