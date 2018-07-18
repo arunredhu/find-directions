@@ -82,8 +82,10 @@ class DirectionsMap extends Component {
         if (directions) {
             this.drawDirections(directions);
         }
+        return null;
     }
 
+    // do nothing
     componentDidUpdate() {}
 
     render() {
