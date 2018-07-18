@@ -2,6 +2,7 @@
     "name": "find-directions",
     "version": "0.1.0",
     "private": true,
+    "homepage": "find-directions",
     "dependencies": {
         "@types/autoprefixer": "^6.7.3",
         "autoprefixer": "7.1.6",
