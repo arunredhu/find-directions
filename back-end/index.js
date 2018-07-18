@@ -67,5 +67,5 @@ app.use(logger())
     .use(router.routes())
     .use(router.allowedMethods());
 
-app.listen(8080);
-console.log('Mock server started at port 8080');
+app.listen(3001);
+console.log('Mock server started at port 3001');

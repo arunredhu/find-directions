@@ -1,19 +1,19 @@
 {
-  "name": "driving-route",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "concurrently": "^3.6.0"
-  },
-  "scripts": {
-    "install-client": "cd front-end && npm install",
-    "install-server": "cd back-end && npm install",
-    "update-client": "cd front-end && npm update",
-    "update-server": "cd back-end && npm update",
-    "client": "cd front-end && npm run start",
-    "server": "cd back-end && node index.js",
-    "update": "concurrently --kill-others-on-fail \"npm update-client\" \"npm update-server\"",
-    "install": "concurrently --kill-others-on-fail \"npm run install-server\" \"npm run install-client\"",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
-  }
+    "name": "driving-route",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "concurrently": "^3.6.0"
+    },
+    "scripts": {
+        "install-client": "cd front-end && npm install",
+        "install-server": "cd back-end && npm install",
+        "update-client": "cd front-end && npm update",
+        "update-server": "cd back-end && npm update",
+        "client": "cd front-end && npm run start",
+        "server": "cd back-end && node index.js",
+        "update": "concurrently --kill-others-on-fail \"npm update-client\" \"npm update-server\"",
+        "install": "concurrently --kill-others-on-fail \"npm run install-server\" \"npm run install-client\"",
+        "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    }
 }
